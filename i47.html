@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>i47® – Native Language Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--card:#fff;--ink:#3c3c3c;--mute:#777;--line:#e5e5e5;--soft:#f7f7f7;--green:#58cc02;--greenD:#58a700;--greenL:#d7ffb8;--blue:#1cb0f6;--blueD:#1899d6;--gold:#ffc800;--red:#ff4b4b;--art:.07;--ff:'Nunito',system-ui,sans-serif}
+:root[data-theme=dark]{--bg:#131f24;--card:#1f2c33;--ink:#f1f7fb;--mute:#8da0ab;--line:#37464f;--soft:#18262d;--greenL:#243b1f;--art:.10}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--ff);font-weight:700;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);transition:background .25s,color .25s}
+#art{position:fixed;inset:0;z-index:0;color:var(--green);opacity:var(--art);pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 18px 90px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;align-items:center;gap:12px;padding:14px 0 12px;border-bottom:2px solid var(--line)}
+.logo{font-weight:900;font-size:28px;color:var(--green);letter-spacing:-.5px;cursor:pointer}
+.logo sup{font-size:11px}
+.sp{flex:1}
+.btn{font:900 15px var(--ff);text-transform:uppercase;letter-spacing:.6px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);color:var(--blue);border-radius:16px;padding:12px 18px;cursor:pointer;transition:transform .08s}
+.btn:active{transform:translateY(2px);border-bottom-width:2px}
+.btn.g{background:var(--green);border-color:var(--greenD);color:#fff}
+.btn.sq{width:46px;height:46px;padding:0;font-size:20px;display:grid;place-items:center}
+.btn:focus-visible,.card:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+h1{font-weight:900;font-size:27px;margin:24px 0 6px}
+.sub{color:var(--mute);margin-bottom:20px}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:20px;padding:16px;cursor:pointer;display:flex;align-items:center;gap:14px;margin-bottom:14px;text-align:left;width:100%;color:var(--ink);font-family:var(--ff);transition:transform .08s,border-color .15s}
+.card:hover{border-color:var(--blue)}
+.card:active{transform:translateY(3px);border-bottom-width:2px}
+.badge{width:62px;height:62px;border-radius:50%;background:var(--greenL);display:grid;place-items:center;font-size:30px;flex:none}
+.card .t{flex:1;min-width:0}
+.card .n{font-weight:900;font-size:20px}
+.card .d{color:var(--mute);font-size:14px;margin-top:2px}
+.bar{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .4s;position:relative}
+.bar i::after{content:"";position:absolute;left:8px;right:8px;top:3px;height:4px;background:rgba(255,255,255,.35);border-radius:9px}
+.lock{opacity:.85}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid .card{flex-direction:column;text-align:center;margin:0;padding:20px 12px}
+.grid .badge{width:70px;height:70px;font-size:34px}
+.word{background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:20px;padding:16px;margin-bottom:14px;display:flex;gap:14px;align-items:center}
+.word.done{border-color:var(--green);background:var(--greenL)}
+.word .t{flex:1;min-width:0}
+.w{font-weight:900;font-size:24px;overflow-wrap:anywhere}
+.r{color:var(--mute);font-size:16px;margin-top:4px;overflow-wrap:anywhere}
+.r b{font-size:11px;text-transform:uppercase;letter-spacing:.8px;margin-right:6px;opacity:.8}
+.side{display:flex;flex-direction:column;gap:8px;align-items:center}
+.play.on{background:var(--blue);color:#fff;border-color:var(--blueD)}
+.tick.on{background:var(--green);color:#fff;border-color:var(--greenD)}
+.ph{border:2px dashed var(--line);border-radius:20px;padding:22px;color:var(--mute);text-align:center;margin-top:14px;line-height:1.5}
+.skel{height:84px;border-radius:20px;background:linear-gradient(90deg,var(--soft),var(--line),var(--soft));background-size:200% 100%;animation:sk 1.2s infinite;margin-bottom:14px}
+@keyframes sk{to{background-position:-200% 0}}
+.lessonbar{position:sticky;top:75px;z-index:4;background:var(--bg);padding:10px 0 4px}
+.lessonbar .bar{margin:0}
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;animation:fd .2s}
+.sheet>div{background:var(--card);border-radius:28px 28px 0 0;padding:28px 24px calc(28px + env(safe-area-inset-bottom));width:100%;max-width:620px;text-align:center;animation:up .25s}
+.sheet h2{font-weight:900;margin:8px 0}
+.sheet p{color:var(--mute);margin-bottom:18px;line-height:1.5}
+@keyframes up{from{transform:translateY(60px)}}
+@keyframes fd{from{opacity:0}}
+.pop{text-align:center;padding:24px;border-radius:20px;background:var(--greenL);border:2px solid var(--green);margin:10px 0 20px;animation:up .3s}
+.pop h2{font-weight:900;color:var(--greenD)}
+.foot{text-align:center;color:var(--mute);font-style:italic;margin-top:30px;font-weight:600}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg id="art" width="100%" height="100%" aria-hidden="true"><defs><pattern id="p" width="260" height="260" patternUnits="userSpaceOnUse"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M10 70 L40 25 L60 50 L80 20 L115 70 Z"/><path d="M150 20 L215 20 L215 55 Q215 85 182 100 Q150 85 150 55 Z"/><path d="M182 30 V90 M158 52 H206"/><path d="M20 160 L100 130 M100 130 L88 126 M100 130 L92 142 M30 156 L24 168"/><path d="M150 230 L235 200 M235 200 L223 197 M235 200 L227 211 M160 226 L154 238"/><path d="M20 235 L50 195 L72 225 L95 185 L125 235 Z"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+
+<div class="wrap">
+  <div class="top">
+    <button class="btn sq" id="back" aria-label="Back" hidden>←</button>
+    <div class="logo" id="logo">i47<sup>®</sup></div>
+    <div class="sp"></div>
+    <button class="btn sq" id="theme" aria-label="Switch light or dark mode">🌙</button>
+  </div>
+  <main id="main"></main>
+  <div class="foot">“Language is identity. Preserving it preserves people.”</div>
+</div>
+
+<script>
+/* ===== YOUR SHEET LINKS (same ones as before). Add a language or category here. ===== */
+const SOM="https://docs.google.com/spreadsheets/d/e/2PACX-1vRu_xYssnNbl4I8gy-gNrQTAoePETQZC_BFluw5w_dCsuFmjIhXNCJbcMcIxoXjeY309Y_Ytu73-3Jt/pubhtml?single=true&gid=";
+const LUO="https://docs.google.com/spreadsheets/d/e/2PACX-1vSLSv4lRLy4tJiw-vQugkxZSeEmFHI_kEzMAMQ3PFMw5gWQbYXK-py_W09ib2HehBD5KRtGZfDpuwER/pubhtml?single=true&gid=";
+const LANGS={
+  somali:{name:"Somali",icon:"🇸🇴",sheets:{alphabet:SOM+"1640331858",numbers:SOM+"1405329022",family:SOM+"1170462479",animals:SOM+"937722853",greetings:SOM+"600277276"}},
+  luo:{name:"Luo",icon:"🛶",sheets:{alphabet:LUO+"1877640834",numbers:LUO+"428167960",family:LUO+"0",animals:LUO+"1759412927",greetings:LUO+"128128877"}}
+};
+const CATS=[{id:"alphabet",icon:"🔤",name:"Alphabet"},{id:"numbers",icon:"🔢",name:"Numbers"},{id:"family",icon:"👨‍👩‍👧",name:"Family"},{id:"animals",icon:"🐄",name:"Animals"},{id:"greetings",icon:"👋",name:"Greetings"}];
+/* ================================================================================== */
+
+const $=s=>document.querySelector(s), main=$("#main"), back=$("#back");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let nav=[];   // history stack of functions
+
+/* theme */
+function setTheme(t){document.documentElement.dataset.theme=t;$("#theme").textContent=t==="dark"?"☀️":"🌙";store.set("i47theme",t)}
+setTheme(store.get("i47theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+$("#theme").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+
+/* navigation */
+function go(fn,push=true){if(push&&cur)nav.push(cur);cur=fn;back.hidden=nav.length===0&&fn===home;fn();scrollTo(0,0)}
+let cur=null;
+back.onclick=()=>{const p=nav.pop();if(p){cur=p;back.hidden=nav.length===0&&p===home;p();scrollTo(0,0)}};
+$("#logo").onclick=()=>{nav=[];go(home,false);back.hidden=true};
+
+/* sheet data */
+const isUrl=s=>/^https?:\/\//i.test(s);
+function parseCSV(t){const rows=[];let r=[],c="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+  if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+  else if(ch=='"')q=true;else if(ch==','){r.push(c);c=""}
+  else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;r.push(c);rows.push(r);r=[];c=""}else c+=ch}
+  if(c||r.length){r.push(c);rows.push(r)}return rows}
+function toItems(rows){
+  rows=rows.map(r=>r.map(c=>c.trim())).filter(r=>r.some(Boolean));if(!rows.length)return[];
+  const hasUrl=r=>r&&r.some(isUrl);
+  const hdr=!hasUrl(rows[0])&&(hasUrl(rows[1])||/word|english|meaning|audio|translation|luo|somali|letter|number|name|category|sound/i.test(rows[0].join(" ")));
+  const H=hdr?rows[0]:[], body=hdr?rows.slice(1):rows;
+  return body.map(r=>{let audio="";const f=[];
+    r.forEach((c,i)=>{if(!c)return;if(isUrl(c)){if(!audio)audio=c}else f.push({h:H[i]||"",v:c})});
+    return f.length?{title:f[0].v,rest:f.slice(1),audio}:null}).filter(Boolean)}
+const cache={};
+async function getItems(url){
+  if(cache[url])return cache[url];
+  const csv=url.replace("/pubhtml","/pub")+"&output=csv";
+  const res=await fetch(csv);if(!res.ok)throw new Error("fetch");
+  return cache[url]=toItems(parseCSV(await res.text()));
+}
+function audioUrl(v){
+  let m=v.match(/drive\.google\.com\/file\/d\/([^\/?]+)/)||v.match(/drive\.google\.com\/.*[?&]id=([^&]+)/);
+  if(m)return "https://drive.google.com/uc?export=download&id="+m[1];
+  if(/dropbox\.com/.test(v))return v.replace("www.dropbox.com","dl.dropboxusercontent.com").replace(/[?&]dl=0/,"");
+  return v;
+}
+let player=null,playBtn=null;
+function play(btn,url){
+  if(player){player.pause();playBtn&&playBtn.classList.remove("on")}
+  player=new Audio(audioUrl(url));playBtn=btn;btn.classList.add("on");
+  player.onended=()=>btn.classList.remove("on");
+  player.play().catch(()=>{btn.classList.remove("on");btn.textContent="⚠️";setTimeout(()=>btn.textContent="🔊",1500)});
+}
+
+/* progress */
+const key=(l,c)=>"i47:"+l+":"+c;
+const prog=(l,c)=>store.get(key(l,c))||{done:[],total:0};
+
+/* screens */
+function home(){
+  main.innerHTML=`<h1>Choose a language</h1><p class="sub">Learn your native language, one word at a time.</p>`+
+  Object.entries(LANGS).map(([id,L])=>{
+    const tot=CATS.reduce((a,c)=>a+prog(id,c.id).done.length,0);
+    return `<button class="card" data-l="${id}"><div class="badge">${L.icon}</div><div class="t"><div class="n">${L.name}</div><div class="d">${tot?tot+" words learned":"Start learning"}</div></div><span>›</span></button>`}).join("");
+  main.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>go(()=>lang(b.dataset.l)));
+}
+function lang(id){
+  const L=LANGS[id];
+  main.innerHTML=`<h1>${L.icon} ${L.name}</h1><p class="sub">Pick a lesson.</p><div class="grid">`+
+  CATS.filter(c=>L.sheets[c.id]).map(c=>{const p=prog(id,c.id),pc=p.total?Math.round(p.done.length/p.total*100):0;
+    return `<button class="card" data-c="${c.id}"><div class="badge">${pc===100?"✅":c.icon}</div><div class="n">${c.name}</div><div class="bar" style="width:100%"><i style="width:${pc}%"></i></div><div class="d">${p.total?p.done.length+" / "+p.total:"New"}</div></button>`}).join("")+
+  `</div><div style="height:14px"></div>
+  <button class="card lock" id="dict"><div class="badge">📘</div><div class="t"><div class="n">Dictionary 🔒</div><div class="d">Premium · coming soon</div></div></button>
+  <button class="card lock" id="tts"><div class="badge">🔊</div><div class="t"><div class="n">Text-to-Speech 🔒</div><div class="d">Premium · coming soon</div></div></button>`;
+  main.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>go(()=>lesson(id,b.dataset.c)));
+  $("#dict").onclick=()=>premium("📘","Dictionary",`Full ${L.name} word search, meanings, examples and native audio.`);
+  $("#tts").onclick=()=>premium("🔊","Text-to-Speech",`Type or paste ${L.name} text and hear native pronunciation.`);
+}
+function premium(ic,t,d){
+  const s=document.createElement("div");s.className="sheet";
+  s.innerHTML=`<div><div style="font-size:48px">${ic}</div><h2>${t} 🔒</h2><p><b>Premium feature</b><br>${d}<br>Status: coming soon</p><button class="btn g" style="width:100%">Got it</button></div>`;
+  s.onclick=e=>{if(e.target===s||e.target.tagName==="BUTTON")s.remove()};document.body.appendChild(s);
+}
+async function lesson(l,c){
+  const cat=CATS.find(x=>x.id===c),url=LANGS[l].sheets[c];
+  main.innerHTML=`<h1>${cat.icon} ${cat.name}</h1><p class="sub">${LANGS[l].name} · tap 🔊 to listen, ✓ when you know it.</p><div class="skel"></div><div class="skel"></div><div class="skel"></div>`;
+  let items;
+  try{items=await getItems(url)}catch(e){
+    main.innerHTML=`<h1>${cat.icon} ${cat.name}</h1><div class="ph">Couldn't load this lesson. Check your internet and that the sheet is still published to the web.<br><br><a class="btn" style="text-decoration:none;display:inline-block" href="${url}" target="_blank" rel="noopener">Open original sheet</a></div>`;return}
+  if(!items.length){main.innerHTML=`<h1>${cat.icon} ${cat.name}</h1><div class="ph">No words here yet.</div>`;return}
+  const p=prog(l,c);p.total=items.length;store.set(key(l,c),p);
+  main.innerHTML=`<h1>${cat.icon} ${cat.name}</h1><p class="sub">${LANGS[l].name} · tap 🔊 to listen, ✓ when you know it.</p>
+  <div class="lessonbar"><div class="bar"><i id="pb"></i></div><div class="d" id="pt" style="color:var(--mute);margin-top:6px;font-size:14px"></div></div><div id="win"></div><div id="list" style="margin-top:12px"></div>`;
+  const upd=()=>{const pc=Math.round(p.done.length/items.length*100);$("#pb").style.width=pc+"%";$("#pt").textContent=p.done.length+" of "+items.length+" learned";
+    $("#win").innerHTML=p.done.length===items.length?`<div class="pop"><div style="font-size:44px">🎉</div><h2>Lesson complete!</h2></div>`:"";store.set(key(l,c),p)};
+  $("#list").innerHTML=items.map((it,i)=>`<div class="word ${p.done.includes(it.title)?"done":""}" data-i="${i}"><div class="t"><div class="w">${esc(it.title)}</div>${it.rest.map(r=>`<div class="r">${r.h?`<b>${esc(r.h)}</b>`:""}${esc(r.v)}</div>`).join("")}</div>
+    <div class="side"><button class="btn sq play" aria-label="Play audio" ${it.audio?"":"disabled style='opacity:.35'"}>🔊</button><button class="btn sq tick ${p.done.includes(it.title)?"on":""}" aria-label="Mark as learned">✓</button></div></div>`).join("");
+  $("#list").querySelectorAll(".word").forEach(w=>{const it=items[w.dataset.i];
+    w.querySelector(".play").onclick=e=>it.audio&&play(e.currentTarget,it.audio);
+    w.querySelector(".tick").onclick=e=>{const k=p.done.indexOf(it.title);if(k<0)p.done.push(it.title);else p.done.splice(k,1);
+      w.classList.toggle("done",k<0);e.currentTarget.classList.toggle("on",k<0);upd()}});
+  upd();
+}
+go(home,false);
+</script>
+</body>
+</html>
